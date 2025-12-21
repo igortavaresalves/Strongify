@@ -9,16 +9,32 @@ from typing import List, Optional
 import uuid
 import secrets
 
-from models import (
-    PersonalCreate, AlunoCreate, UsuarioResponse, LoginRequest, LoginResponse,
-    TreinoCreate, TreinoUpdate, TreinoResponse,
-    AtribuicaoCreate, AtribuicaoResponse,
-    ExecucaoCreate, ExecucaoResponse,
-    AdicionarMedida
+from .models import (
+    HistoricoMedida,
+    UsuarioBase,
+    PersonalCreate,
+    AlunoCreate,
+    UsuarioResponse,
+    LoginRequest,
+    LoginResponse,
+    Exercicio,
+    TreinoCreate,
+    TreinoUpdate,
+    TreinoResponse,
+    AtribuicaoCreate,
+    AtribuicaoResponse,
+    ExercicioExecucao,
+    ExecucaoCreate,
+    ExecucaoResponse,
+    AdicionarMedida,
 )
-from database import (
-    usuarios_collection, treinos_collection, atribuicoes_collection, 
-    execucoes_collection, close_db_connection
+
+from .database import (
+    usuarios_collection,
+    treinos_collection,
+    atribuicoes_collection,
+    execucoes_collection,
+    close_db_connection,
 )
 
 ROOT_DIR = Path(__file__).parent
