@@ -1,0 +1,31 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "services": {
+    "backend": {
+      "build": {
+        "builder": "DOCKERFILE",
+        "dockerfilePath": "backend/Dockerfile"
+      },
+      "deploy": {
+        "startCommand": "uvicorn server:app --host 0.0.0.0 --port 8000",
+        "healthcheckPath": "/api/health"
+      }
+    },
+    "frontend": {
+      "build": {
+        "builder": "DOCKERFILE",
+        "dockerfilePath": "frontend/Dockerfile"
+      },
+      "deploy": {
+        "startCommand": "nginx -g 'daemon off;'",
+        "healthcheckPath": "/"
+      }
+    },
+    "mongodb": {
+      "build": {
+        "builder": "DOCKERFILE",
+        "dockerfilePath": "mongodb/Dockerfile"
+      }
+    }
+  }
+}
