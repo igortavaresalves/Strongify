@@ -1,16 +1,14 @@
 # Stage 1: Build
-FROM node:18-alpine as build
+FROM node:20-alpine as build
 
 WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-# Usar yarn em vez de npm
 RUN yarn install --frozen-lockfile
 
 COPY . .
 
-# Build com yarn
 RUN yarn build
 
 # Stage 2: Serve
