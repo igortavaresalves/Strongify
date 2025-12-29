@@ -9,7 +9,7 @@ from typing import List, Optional
 import uuid
 import secrets
 
-from .models import (
+from models import (
     HistoricoMedida,
     UsuarioBase,
     PersonalCreate,
