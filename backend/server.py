@@ -29,7 +29,7 @@ from models import (
     AdicionarMedida,
 )
 
-from .database import (
+from database import (
     usuarios_collection,
     treinos_collection,
     atribuicoes_collection,
