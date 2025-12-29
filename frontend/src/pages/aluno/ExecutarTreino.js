@@ -176,17 +176,17 @@ const ExecutarTreino = () => {
 
   if (!treino || !exercicio) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center transition-colors duration-300">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-gray-600">Carregando treino...</p>
+          <p className="text-gray-600 dark:text-gray-400">Carregando treino...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Navbar />
       
       <div className="max-w-5xl mx-auto px-6 py-8">
@@ -196,21 +196,21 @@ const ExecutarTreino = () => {
               if (window.confirm('Tem certeza que deseja sair? O progresso será perdido.')) {
                 navigate('/aluno/dashboard');
               }
-            }} className="text-red-600 hover:text-red-700 font-medium">
+            }} className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-medium">
               ← Sair do Treino
             </button>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Exercício {exercicioAtual + 1} de {totalExercicios}
             </div>
           </div>
 
-          <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
             <div 
               className="bg-blue-500 h-3 rounded-full transition-all duration-300"
               style={{ width: `${((exercicioAtual + (serieAtual / exercicio.series)) / totalExercicios) * 100}%` }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 text-center">{Math.round(((exercicioAtual + (serieAtual / exercicio.series)) / totalExercicios) * 100)}% concluído</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">{Math.round(((exercicioAtual + (serieAtual / exercicio.series)) / totalExercicios) * 100)}% concluído</p>
         </div>
 
         {emDescanso ? (
@@ -219,8 +219,8 @@ const ExecutarTreino = () => {
               <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-4">
                 <span className="text-5xl font-bold text-white">{tempoDescanso}</span>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Tempo de Descanso</h2>
-              <p className="text-gray-600">Prepare-se para a próxima série</p>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tempo de Descanso</h2>
+              <p className="text-gray-600 dark:text-gray-400">Prepare-se para a próxima série</p>
             </div>
 
             <div className="space-y-3 max-w-md mx-auto">
@@ -234,42 +234,42 @@ const ExecutarTreino = () => {
             <div className="card mb-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900">{exercicio.nome}</h1>
-                  <p className="text-gray-600">Série {serieAtual} de {exercicio.series}</p>
+                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{exercicio.nome}</h1>
+                  <p className="text-gray-600 dark:text-gray-400">Série {serieAtual} de {exercicio.series}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-500">Repetições</p>
-                  <p className="text-2xl font-bold text-blue-600">{exercicio.repeticoes}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Repetições</p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{exercicio.repeticoes}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-gray-200">
+              <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-gray-200 dark:border-gray-700">
                 <div className="text-center">
-                  <p className="text-xs text-gray-500 mb-1">Séries</p>
-                  <p className="font-semibold text-gray-900">{exercicio.series}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Séries</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{exercicio.series}</p>
                 </div>
                 {exercicio.carga && (
                   <div className="text-center">
-                    <p className="text-xs text-gray-500 mb-1">Carga Sugerida</p>
-                    <p className="font-semibold text-gray-900">{exercicio.carga}kg</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Carga Sugerida</p>
+                    <p className="font-semibold text-gray-900 dark:text-white">{exercicio.carga}kg</p>
                   </div>
                 )}
                 <div className="text-center">
-                  <p className="text-xs text-gray-500 mb-1">Descanso</p>
-                  <p className="font-semibold text-gray-900">{exercicio.descanso || 60}s</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Descanso</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{exercicio.descanso || 60}s</p>
                 </div>
               </div>
 
               {exercicio.observacoes && (
-                <div className="bg-blue-50 p-4 rounded-lg mb-6">
-                  <p className="text-sm font-semibold text-gray-700 mb-1">💡 Técnica:</p>
-                  <p className="text-sm text-gray-700">{exercicio.observacoes}</p>
+                <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg mb-6">
+                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">💡 Técnica:</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">{exercicio.observacoes}</p>
                 </div>
               )}
 
               {(exercicio.videoUrl || exercicio.videoLocal) && (
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-gray-700 mb-3">📹 Vídeo de Referência:</h3>
+                  <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">📹 Vídeo de Referência:</h3>
                   <VideoPlayer 
                     videoUrl={exercicio.videoUrl} 
                     videoLocal={exercicio.videoLocal}
@@ -280,11 +280,11 @@ const ExecutarTreino = () => {
             </div>
 
             <div className="card">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Registrar Série {serieAtual}</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Registrar Série {serieAtual}</h3>
               
               <div className="space-y-4 mb-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Repetições Realizadas *</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Repetições Realizadas *</label>
                   <input 
                     type="number" 
                     data-testid="repeticoes-input"
@@ -297,7 +297,7 @@ const ExecutarTreino = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Carga Utilizada (kg)</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Carga Utilizada (kg)</label>
                   <input 
                     type="number" 
                     data-testid="carga-input"
@@ -310,7 +310,7 @@ const ExecutarTreino = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Observações (opcional)</label>
+                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Observações (opcional)</label>
                   <textarea 
                     data-testid="observacoes-input"
                     value={observacoes} 
@@ -343,12 +343,12 @@ const ExecutarTreino = () => {
 
             {registros.length > 0 && (
               <div className="card mt-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Registro do Treino</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Registro do Treino</h3>
                 <div className="space-y-2">
                   {registros.map((reg, idx) => {
                     const ex = treino.exercicios.find(e => e.id === reg.idExercicio);
                     return (
-                      <div key={idx} className="text-sm p-3 bg-gray-50 rounded-lg">
+                      <div key={idx} className="text-sm p-3 bg-gray-50 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-white">
                         <span className="font-semibold">{ex?.nome}</span> - Série {reg.serie}: {reg.repeticoesFeit} reps
                         {reg.cargaUtilizada && ` @ ${reg.cargaUtilizada}kg`}
                       </div>
